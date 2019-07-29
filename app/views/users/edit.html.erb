@@ -1,0 +1,51 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<h3 class="text-margin-bottom border-bottom font_2">User edit</h3>
+			<div class="col-md-12">
+				<%= form_for(@user) do |f| %>
+
+				<% if @user.errors.any? %>
+					<div id="error_explanation" class="alert alert-danger">
+						<h2 class="error_font"><%= @user.errors.count %>件のエラーが発生しました。</h2>
+						<ul>
+							<% @user.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+							<% end %>
+						</ul>
+					</div>
+				<% end %>
+
+					<div class="row blog-margin" style="border-bottom: 1px solid #f7f7f7;">
+						<h4 class="font_3">Name:</h4>
+						<p><%= f.text_field :name %></p>
+					</div>
+
+					<div class="row blog-margin" style="border-bottom: 1px solid #f7f7f7;">
+						<h4 class="font_3">Mini profile:</h4>
+						<p><%= f.text_field :mini_profile_text %></p>
+					</div>
+
+					<div class="row blog-margin">
+						<h4 class="font_3">Profile:</h4>
+					</div>
+					<div class="row blog-margin">
+						<%= f.text_area :profile_text, rows:'5', class: "col-md-12" %>
+					</div>
+
+					<div class="row blog-margin" style="border-bottom: 1px solid #f7f7f7; border-top: 1px solid #f7f7f7;">
+						<h4 class="font_3">Profile image:</h4>
+						<p><%= f.attachment_field :profile_image %></p>
+					</div>
+
+					<div class="row blog-margin">
+						<%= f.submit 'Update', class: "font_4 btn-default btn" %>　
+						<%= link_to 'Cancel', users_path, class: "font_4" %>
+	 					<% end %>
+	 				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2"></div>
+</div>
